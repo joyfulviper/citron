@@ -1,0 +1,41 @@
+plugins {
+    id 'java'
+}
+
+jar {
+    //실행할 메인 클래스 명시
+    manifest {
+        attributes 'Main-Class': 'org.prgrms.Main'
+    }
+    //라이브러리 전부 가져오기
+    from {
+        configurations.runtimeClasspath.collect { it.isDirectory() ? it : zipTree(it) }
+    }
+}
+
+
+group = 'org.prgrms'
+version = '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    // SLF4J API
+    implementation 'org.slf4j:slf4j-api:1.7.32'
+    // Logback: SLF4J의 구현체
+    implementation 'ch.qos.logback:logback-classic:1.2.6'
+    implementation 'mysql:mysql-connector-java:8.0.28'
+    implementation 'com.zaxxer:HikariCP:5.0.0'
+    testImplementation platform('org.junit:junit-bom:5.9.1')
+    testImplementation 'org.junit.jupiter:junit-jupiter'
+}
+
+test {
+    useJUnitPlatform()
+}
+
+tasks.withType(JavaCompile) {
+    options.encoding = 'UTF-8'
+}
