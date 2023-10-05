@@ -13,9 +13,9 @@ public class DatabaseConnectionPool {
     private static final Logger log = LoggerFactory.getLogger(DatabaseConnectionPool.class);
 
     static {
-        config.setJdbcUrl("jdbc:mysql://localhost:3307/citron");
-        config.setUsername("root");
-        config.setPassword("1234");
+        config.setJdbcUrl("jdbc:mysql://citron-db.cdkbl0peytws.us-east-1.rds.amazonaws.com:3306/citron");
+        config.setUsername("admin");
+        config.setPassword("admin1234");
         config.setMaximumPoolSize(10);  // 풀의 최대 크기
         config.setMinimumIdle(5);  // 최소한으로 유지할 커넥션 수
         ds = new HikariDataSource(config);
