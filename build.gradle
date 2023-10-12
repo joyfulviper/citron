@@ -1,6 +1,15 @@
 plugins {
-    id 'java'
+    id "java"
+    id "jacoco"
+    id "org.sonarqube" version '3.5.0.2730'
 }
+
+jacocoTestReport {
+    reports {
+        xml.required = true
+    }
+}
+
 
 jar {
     //실행할 메인 클래스 명시

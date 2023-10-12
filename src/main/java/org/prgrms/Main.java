@@ -17,11 +17,11 @@ import java.util.concurrent.Executors;
 
 public class Main {
 
-    private final static Logger log = LoggerFactory.getLogger(Main.class);
+    private static final Logger log = LoggerFactory.getLogger(Main.class);
 
     public static void main(String[] args) throws IOException {
         UsersRepository usersRepository = new UsersRepositoryImpl(new ConcurrentHashMap<>());
-        //new UsersDBRepository();//
+        //new UsersDBRepository();
         UsersController usersController = new UsersController(usersRepository);
         UsersHandler usersHandler = new UsersHandler(usersController);
         HttpServer server = HttpServer.create(new InetSocketAddress(8080), 0);
