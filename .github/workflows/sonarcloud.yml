@@ -17,6 +17,8 @@ jobs:
         with:
           java-version: '17'
           distribution: 'temurin'
+      - name: Make gradlew executable
+        run: chmod +x ./gradlew
 
       # https://github.com/gradle/gradle-build-action
       - name: gradle 테스트
