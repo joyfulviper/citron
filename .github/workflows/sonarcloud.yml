@@ -54,6 +54,6 @@ jobs:
       # https://github.com/mikepenz/action-junit-report
       - name: 테스트 코드 중 테스트 실패한 부분에 'PR check'로 자동 작성
         uses: mikepenz/action-junit-report@v3
-        if: always()
+        if: failure()
         with:
           report_paths: build/test-results/test/TEST-*.xml
