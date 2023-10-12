@@ -4,14 +4,15 @@ import com.sun.net.httpserver.HttpExchange;
 import com.sun.net.httpserver.HttpHandler;
 import com.sun.net.httpserver.HttpServer;
 import org.prgrms.controller.UsersController;
-import org.prgrms.repository.UsersDBRepository;
 import org.prgrms.repository.UsersRepository;
+import org.prgrms.repository.UsersRepositoryImpl;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
 import java.io.OutputStream;
 import java.net.InetSocketAddress;
+import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.Executors;
 
 public class Main {
@@ -19,7 +20,8 @@ public class Main {
     private final static Logger log = LoggerFactory.getLogger(Main.class);
 
     public static void main(String[] args) throws IOException {
-        UsersRepository usersRepository = new UsersDBRepository();//new UsersRepositoryImpl(new ConcurrentHashMap<>());
+        UsersRepository usersRepository = new UsersRepositoryImpl(new ConcurrentHashMap<>());
+        //new UsersDBRepository();//
         UsersController usersController = new UsersController(usersRepository);
         UsersHandler usersHandler = new UsersHandler(usersController);
         HttpServer server = HttpServer.create(new InetSocketAddress(8080), 0);
