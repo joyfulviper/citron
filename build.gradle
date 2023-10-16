@@ -22,7 +22,6 @@ jar {
     }
 }
 
-
 group = 'org.prgrms'
 version = '1.0-SNAPSHOT'
 
