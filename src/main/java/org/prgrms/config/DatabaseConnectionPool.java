@@ -8,6 +8,8 @@ import java.sql.Connection;
 import java.sql.SQLException;
 
 public class DatabaseConnectionPool {
+    //asdf1235asdf
+    //asdfasfd
     private static final HikariConfig config = new HikariConfig();
     private static final HikariDataSource ds;
     private static final Logger log = LoggerFactory.getLogger(DatabaseConnectionPool.class);
